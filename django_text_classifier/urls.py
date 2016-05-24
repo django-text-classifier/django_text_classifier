@@ -6,7 +6,6 @@ from classifier import views
 router = routers.DefaultRouter()
 router.register(r'texts', views.TrainingSetViewSet)
 
-
 urlpatterns = [
     url(r'^', include('classifier.urls')),
     url(r'^api/', include(router.urls)),
