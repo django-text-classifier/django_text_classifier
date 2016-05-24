@@ -1,0 +1,10 @@
+venv
+*.pyc
+staticfiles
+.DS_Store
+.envrc
+.direnv
+__pycache__
+.ipynb_checkpoints
+.env
+classifier/migrations/*

@@ -1,0 +1,1 @@
+web: gunicorn django_text_classifier.wsgi --log-file -
