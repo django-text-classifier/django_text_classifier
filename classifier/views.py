@@ -11,6 +11,19 @@ from .serializers import TrainingSetSerializer
 class Classifier(TemplateView):
     template_name = "classifier/classifier.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['data'] = TrainingSet.objects.all()
+        return context
+
+    def get(request):
+        context['classified_data'] = classsifier.classify(request.GET.get('train'), request.GET.get('target'))
+
+        return render(request, '/classifier/books', context)
+
+    def post(request):
+        pass
+
 
 def index(request):
     context = {}

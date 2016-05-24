@@ -6,11 +6,11 @@ from .models import TrainingSet
 
 
 pipeline = Pipeline([
-     ('vector', CountVectorizer())
-     ('transform', TfidfTransformer())
+     ('vector', CountVectorizer()),
+     ('transform', TfidfTransformer()),
      ('bayes', MultinomialNB())
 ])
 
 
-x = TrainingSet.objects.filter(classifier=url).value_list('body', flat=True))
-y = TrainingSet.objects.filter(classifier=url).value_list('target', flat=True))
+x = TrainingSet.objects.filter(classifier=url).value_list('body', flat=True)
+y = TrainingSet.objects.filter(classifier=url).value_list('target', flat=True)
