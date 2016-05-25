@@ -33,13 +33,9 @@ class Classifier(TemplateView):
                       context=self.get_context_data())
 
     def get(self, request, name):
-        print("Get")
         context = self.get_context_data()
         context['name'] = name
         if request.GET.get('test'):
-            print('-' * 30)
-            print(request.GET.get('test'))
-            print('-' * 30)
             prediction = fit_predict(name, (request.GET.get('test'), ))
             context['predicted'] = prediction[0]
 
