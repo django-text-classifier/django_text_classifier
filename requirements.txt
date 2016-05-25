@@ -3,4 +3,6 @@ Django==1.9.6
 djangorestframework==3.3.3
 gunicorn==19.6.0
 psycopg2==2.6.1
+scikit-learn==0.17.1
+sklearn==0.0
 whitenoise==3.1
