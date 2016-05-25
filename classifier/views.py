@@ -16,8 +16,9 @@ class Classifier(TemplateView):
         context['data'] = TrainingSet.objects.all()
         return context
 
+    # Fake code! Just an example right now
     def get(request):
-        context['classified_data'] = classsifier.classify(request.GET.get('train'), request.GET.get('target'))
+        context['classified_data'] = classifier.classify(request.GET.get('train'), request.GET.get('target'))
 
         return render(request, '/classifier/books', context)
 

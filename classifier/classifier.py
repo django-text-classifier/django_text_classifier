@@ -5,12 +5,29 @@ from sklearn.pipeline import Pipeline
 from .models import TrainingSet
 
 
-pipeline = Pipeline([
-     ('vector', CountVectorizer()),
-     ('transform', TfidfTransformer()),
-     ('bayes', MultinomialNB())
-])
+"""Objects should be saved to the table before running fit_data"""
 
 
-x = TrainingSet.objects.filter(classifier=url).value_list('body', flat=True)
-y = TrainingSet.objects.filter(classifier=url).value_list('target', flat=True)
+def get_pipeline(name):
+    x = TrainingSet.objects.filter(classifier=name).value_list('body',
+                                                               flat=True)
+    y = TrainingSet.objects.filter(classifier=name).value_list('target',
+                                                               flat=True)
+    pipeline = Pipeline([
+         ('vector', CountVectorizer()),
+         ('transform', TfidfTransformer()),
+         ('bayes', MultinomialNB())
+    ])
+
+    pipeline.fit(x, y)
+
+    return pipeline
+
+
+def predict(pipeline, data):
+    return pipeline.predict(data)
+
+
+def fit_predict(name, data):
+    pipeline = get_pipeline(name)
+    return pipline.predict(data)
