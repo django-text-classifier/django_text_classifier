@@ -5,6 +5,23 @@
         <title>{{ name }}</title>
     </head>
     <body>
-        This will be a classifier!
+        Add Training Data
+        <form id="addDataForm" action="" method="post">
+          {% csrf_token %}
+          <input id='body' type="text" name="body" required=True><br>
+          <input id='target' type="text" name="target" required=True><br>
+          <input id="button" type="submit" value="Submit">
+          <input type="hidden" id="classifier" value= {{ name }} >
+        </form>
+      Predict
+      <form class="" action="" method="get">
+        <input type="text" name="test"><br>
+        <input type="submit" value="Submit">
+      </form>
+
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.min.js"></script>
+      <script src= '/static/classifier/classifier.js' ></script>
+
     </body>
 </html>

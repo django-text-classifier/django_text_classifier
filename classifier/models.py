@@ -6,6 +6,6 @@ class TrainingSet(models.Model):
     target = models.CharField(max_length=255)
     classifier = models.CharField(max_length=100, null=True)
 
-    def __str__(self):
-        return 'Classifier {} --> {}: {}'.format(self.classifier,
-                                                 self.body[20], self.target)
+    # def __str__(self):
+    #     return 'Classifier {} --> {}: {}'.format(self.classifier,
+    #                                              self.body[20], self.target)

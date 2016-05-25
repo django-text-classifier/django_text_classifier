@@ -3,6 +3,7 @@ from django.views.generic.base import TemplateView
 from rest_framework import viewsets
 from .models import TrainingSet
 from .serializers import TrainingSetSerializer
+from .classifier import *
 
 
 """ User views """
@@ -16,14 +17,24 @@ class Classifier(TemplateView):
         context['data'] = TrainingSet.objects.all()
         return context
 
-    # Fake code! Just an example right now
-    def get(request):
-        context['classified_data'] = classifier.classify(request.GET.get('train'), request.GET.get('target'))
+    def post(self, request, name):
+        body = request.POST.get('body')
+        target = request.POST.get('target')
+        classifier = name
+        data = TrainingSet.objects.create(classifier=classifier,
+                                          target=target, body=body)
+        data.save()
 
-        return render(request, '/classifier/books', context)
+        return render(request, self.template_name,
+                      context=self.get_context_data())
 
-    def post(request):
-        pass
+    def get(self, request, name):
+        context = self.get_context_data()
+        context['name'] = name
+        if request.GET.get('test'):
+            context['predicted'] = fit_predict(name, request.GET.get('test'))
+
+        return render(request, self.template_name, context)
 
 
 def index(request):

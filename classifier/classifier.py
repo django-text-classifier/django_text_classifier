@@ -1,6 +1,5 @@
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.naive_bayes import MultinomialNB
-from sklearn.cross_validation import train_test_split
 from sklearn.pipeline import Pipeline
 from .models import TrainingSet
 
@@ -9,10 +8,10 @@ from .models import TrainingSet
 
 
 def get_pipeline(name):
-    x = TrainingSet.objects.filter(classifier=name).value_list('body',
-                                                               flat=True)
-    y = TrainingSet.objects.filter(classifier=name).value_list('target',
-                                                               flat=True)
+    x = TrainingSet.objects.filter(classifier=name).values_list('body',
+                                                                flat=True)
+    y = TrainingSet.objects.filter(classifier=name).values_list('target',
+                                                                flat=True)
     pipeline = Pipeline([
          ('vector', CountVectorizer()),
          ('transform', TfidfTransformer()),
@@ -24,10 +23,10 @@ def get_pipeline(name):
     return pipeline
 
 
-def predict(pipeline, data):
-    return pipeline.predict(data)
+def predict(pipeline, body):
+    return pipeline.predict(body)
 
 
-def fit_predict(name, data):
+def fit_predict(name, body):
     pipeline = get_pipeline(name)
-    return pipline.predict(data)
+    return pipeline.predict(body)
