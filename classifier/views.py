@@ -35,7 +35,11 @@ class Classifier(TemplateView):
         context = self.get_context_data()
         context['name'] = name
         if request.GET.get('test'):
-            context['predicted'] = fit_predict(name, request.GET.get('test'))
+            print('-' * 30)
+            print(request.GET.get('test'))
+            print('-' * 30)
+            prediction = fit_predict(name, (request.GET.get('test'), ))
+            context['predicted'] = prediction[0]
 
         return render(request, self.template_name, context)
 
