@@ -1,6 +1,8 @@
 from django.conf.urls import url
 from django.views.generic.base import RedirectView
 from . import views
+from rest_framework.routers import DefaultRouter
+
 
 urlpatterns = [
     url(r'^$', RedirectView.as_view(url='/home/', permanent=False),
