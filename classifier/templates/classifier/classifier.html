@@ -8,10 +8,17 @@
         Add Training Data
         <form id="addDataForm" action="" method="post">
           {% csrf_token %}
-          <input id='body' type="text" name="body" required=True><br>
-          <input id='target' type="text" name="target" required=True><br>
+          <input id='body' type="text" name="body" required=True placeholder="Training body"><br>
+          <input id='target' type="text" name="target" required=True placeholder="Training Target"><br>
           <input id="button" type="submit" value="Submit">
           <input type="hidden" id="classifier" value= {{ name }} >
+        </form>
+        Add CSV
+        <form id="addCSVForm" action="" method="post" name="csvfile" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input id="CSV" type="file" name="csvfile" value=""><br />
+            <input id="csvbutton" type="submit" name="Submit" value="Submit"><br />
+            <input type="hidden" id="classifier" value= {{ name }} >
         </form>
       Predict
       <form class="" action="" method="get">

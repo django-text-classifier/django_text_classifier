@@ -1,9 +1,11 @@
 import csv
+from io import StringIO
 from .models import TrainingSet
 
 
 def handle_uploaded_file(f, classifier_name):
-    corpus_reader = csv.DictReader(f, fieldnames=['body', 'target'])
+    csv_file = StringIO(f.read().decode())
+    corpus_reader = csv.DictReader(csv_file, fieldnames=['body', 'target'])
     for row in corpus_reader:
         training_data = TrainingSet(body=row['body'], target=row['target'],
                                     classifier=classifier_name)
