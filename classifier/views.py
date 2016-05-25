@@ -38,7 +38,8 @@ class Classifier(TemplateView):
 
 
 def index(request):
-    context = {}
+    classifiers = TrainingSet.objects.order_by('classifier')
+    context = {'classifiers': classifiers}
     return render(request, 'classifier/index.html', context)
 
 
