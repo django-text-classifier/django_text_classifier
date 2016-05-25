@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView
 from rest_framework import viewsets
 from .models import TrainingSet
@@ -19,10 +19,7 @@ class Classifier(TemplateView):
         return context
 
     def post(self, request, name):
-        print(request.POST)
-        print(request.FILES)
         if request.POST.get('body'):
-            print("Form")
             body = request.POST.get('body')
             target = request.POST.get('target')
             classifier = name
@@ -32,7 +29,6 @@ class Classifier(TemplateView):
         else:
             print('File')
             handle_uploaded_file(request.FILES['csvfile'], name)
-
         return render(request, self.template_name,
                       context=self.get_context_data())
 
@@ -41,14 +37,26 @@ class Classifier(TemplateView):
         context = self.get_context_data()
         context['name'] = name
         if request.GET.get('test'):
-            context['predicted'] = fit_predict(name, request.GET.get('test'))
+            print('-' * 30)
+            print(request.GET.get('test'))
+            print('-' * 30)
+            prediction = fit_predict(name, (request.GET.get('test'), ))
+            context['predicted'] = prediction[0]
 
         return render(request, self.template_name, context)
 
 
-def index(request):
-    context = {}
-    return render(request, 'classifier/index.html', context)
+class Index(TemplateView):
+    classifiers = TrainingSet.objects.values('classifier').distinct()
+    context = {'classifiers': classifiers}
+    template_name = "classifier/index.html"
+
+    def get(self, request):
+        if request.GET.get('classifier'):
+            url = '/classifier/{}/'.format(request.GET.get('classifier'))
+            return redirect(url)
+        else:
+            return render(request, self.template_name, self.context)
 
 
 """API Endpoint"""

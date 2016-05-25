@@ -12,6 +12,10 @@ def get_pipeline(name):
                                                                 flat=True)
     y = TrainingSet.objects.filter(classifier=name).values_list('target',
                                                                 flat=True)
+    print('-' * 30)
+    print('X: ', x)
+    print('y: ', y)
+    print('-' * 30)
     pipeline = Pipeline([
          ('vector', CountVectorizer()),
          ('transform', TfidfTransformer()),
@@ -21,10 +25,6 @@ def get_pipeline(name):
     pipeline.fit(x, y)
 
     return pipeline
-
-
-def predict(pipeline, body):
-    return pipeline.predict(body)
 
 
 def fit_predict(name, body):
