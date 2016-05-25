@@ -9,4 +9,5 @@ urlpatterns = [
     #     name='redirect'),
     url(r'^$', views.index, name="home"),
     url(r'^classifier/(?P<name>[a-zA-Z]+)/', views.Classifier.as_view(), name="classifier"),
+
 ]

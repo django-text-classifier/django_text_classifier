@@ -18,11 +18,14 @@ class Classifier(TemplateView):
         return context
 
     def post(self, request, name):
-        body = request.POST.get('body')
-        target = request.POST.get('target')
-        classifier = name
-        data = TrainingSet.objects.create(classifier=classifier,
-                                          target=target, body=body)
+        if request.POST.get('csv'):
+            pass
+        else:
+            body = request.POST.get('body')
+            target = request.POST.get('target')
+            classifier = name
+            data = TrainingSet.objects.create(classifier=classifier,
+                                              target=target, body=body)
         data.save()
 
         return render(request, self.template_name,
