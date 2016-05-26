@@ -34,10 +34,10 @@
       </form><br>
     </div><br />
     <div class="lower">
+    {% if data_size > 0 %}
       <p class="description">
         Predict
       </p> <br />
-      {% if data_size > 0 %}
       <p class="description">
           This classifier has been trained with {{ data_size }} pieces of data.
       </p>

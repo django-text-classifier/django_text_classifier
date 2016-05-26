@@ -62,7 +62,11 @@ class Index(TemplateView):
 
     def get(self, request):
         if request.GET.get('classifier'):
-            url = '/classifier/{}/'.format(request.GET.get('classifier'))
+            classifier = request.GET.get('classifier')
+            for ch in [".", "-", ",", "_", "/", "%", " "]:
+                if ch in classifier:
+                    classifier = classifier.replace(ch, "")
+            url = '/classifier/{}/'.format(classifier)
             return redirect(url)
         else:
             return render(request, self.template_name, self.context)
