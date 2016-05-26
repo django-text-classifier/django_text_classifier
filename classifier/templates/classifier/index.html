@@ -5,23 +5,25 @@
 <div class="site-wrapper">
   <div class="container">
     <div class="text-content">
-      <h1 class="title">your fancy text classifier</h1>
+      <h1 class="title"><b>your fancy text classifier</b></h1>
       <p class="description">
-        hey this is a text classifier
+        Hey, This is a text classifier
       </p>
     </div>
     <div class="body-content">
-      <div class="col-xs-6">
-        Pick an existing classifier!
+      <div class="col-xs-5">
+        <h3>Pick an existing classifier</h3>
         <br />
         {% for classifier in classifiers %}
           <a href="{% url 'classifier' classifier.classifier %}"> {{ classifier.classifier }} </a><br />
         {% endfor %}
       </div>
-
-      <div class="col-xs-4">
-        Add a new classifier!
-        <br /><br />
+      <div class="col-xs-2">
+      <h2><b>- OR -</b></h2>
+      </div>
+      <div class="col-xs-5">
+        <h3>Add a new classifier</h3>
+        <br />
         <form action="" method="get">
           <input id='classifier' class=form-control type="text" name="classifier" required=True><br>
           <input id="button" class="btn btn-default" type="submit" value="Submit">

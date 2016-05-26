@@ -1,12 +1,17 @@
 {%extends 'classifier/base.html'%}
 {% block title %} LOGIN - {{ block.super}}{% endblock %}
+
 {% block content %}
-<h1> Login to Your Profile </h1>
-<form role="form" action="" method="POST">
-	{% csrf_token %}
-	{{form.as_p}}
-	<input type = "Submit" value = "Log In" />
-	<input type="hidden" name="next" value="{{ next }}" />
-	<p>Not a Member? <a href="{% url 'registration_register' %}">Register</a>!</p>
-</form>
+<div class"container">
+	<div class="log-content">
+		<h1> Login to Your Profile </h1>
+		<form role="form" action="" method="POST">
+			{% csrf_token %}
+			{{form.as_p}}
+			<input id="button" class="btn btn-default" type="submit" value="Log In">
+			<input type="hidden" name="next" value="{{ next }}" />
+			<p>Not a Member? <a href="{% url 'registration_register' %}">Register</a>!</p>
+		</form>
+	</div>
+</div>
 {% endblock %}
