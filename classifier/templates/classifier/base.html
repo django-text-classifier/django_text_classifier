@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load staticfiles %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +18,7 @@
 
 
 <body>
+{% if user.is_authenticated %}
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -27,6 +29,11 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="{% url 'home' %}">Smokin' Mirrors</a>
+        <li><a href="{% url 'auth_logout' %}">Logout</a></li>
+        {% else %}
+        <li> <a href="{% url 'auth_login' %}">Login</a></li>
+        <li><a href="{% url 'registration_register' %}">Register</a></li>
+        {% endif %}
       </div>
     </div>
   </nav>

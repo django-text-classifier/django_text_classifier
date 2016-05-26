@@ -1,0 +1,12 @@
+{% extends 'classifier/base.html'%}
+{% block title %}
+Registration Form 
+{% endblock %}
+{% block content %}
+<h1>Registration Form </h1>
+<form role = "form" action="" method="POST">
+	{%csrf_token%}
+	{{form.as_p}}
+	<input type = "submit" value = "submit" />
+</form>
+{% endblock %}

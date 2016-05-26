@@ -1,13 +1,4 @@
-"""
-Django settings for django_text_classifier project on Heroku. Fore more info, see:
-https://github.com/heroku/heroku-django-template
 
-For more information on this file, see
-https://docs.djangoproject.com/en/1.9/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.9/ref/settings/
-"""
 
 import os
 import dj_database_url
@@ -37,7 +28,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'registration',
 )
+REGISTRATION_OPEN = True                
+REGISTRATION_AUTO_LOGIN = True  
+LOGIN_REDIRECT_URL = '/text/'  
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = 'home'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -77,6 +74,12 @@ WSGI_APPLICATION = 'django_text_classifier.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'texter',
+        'USER': 'davidmohrmann',
+        'PASSWORD': 'admin123',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
