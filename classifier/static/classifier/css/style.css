@@ -4,6 +4,12 @@
 .navbar-default .navbar-brand {
   font-family: 'Raleway';
   color: #009ACD;
+  margin-top: 20px;
+}
+
+.navbar-default {
+  background: #FFF;
+  border: 2px;
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -11,6 +17,8 @@
   font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 2px;
+  width: 700px;
+  background: rgba(0,0,0,0.4);
 }
 
 .navbar-default .navbar-text {
@@ -21,10 +29,20 @@
   font-size:14px;
 }
 
+h1 {
+  font-size: 50px;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 22.5px;
+}
+
 body {
   font-family: 'Raleway', serif;
   font-size: 20px;
-  padding-top: 50px;
+  padding-top: 70px;
   text-align: center;
   background-color: #FFF;
 }
@@ -38,5 +56,10 @@ body {
 }
 
 .container {
-  width: 800px;
+  margin-top: 50px;
+  width: 1000px;
+}
+
+.body-content {
+  margin-top: 100px;
 }
