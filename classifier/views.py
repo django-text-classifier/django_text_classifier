@@ -60,7 +60,14 @@ class Index(TemplateView):
     context = {'classifiers': classifiers}
     template_name = "classifier/index.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        classifiers = TrainingSet.objects.values('classifier').distinct()
+        context = {'classifiers': classifiers}
+        return context
+
     def get(self, request):
+        context = self.get_context_data()
         if request.GET.get('classifier'):
             classifier = request.GET.get('classifier')
             for ch in [".", "-", ",", "_", "/", "%", " "]:
@@ -69,7 +76,7 @@ class Index(TemplateView):
             url = '/classifier/{}/'.format(classifier)
             return redirect(url)
         else:
-            return render(request, self.template_name, self.context)
+            return render(request, self.template_name, context)
 
 
 """API Endpoint"""

@@ -1,11 +1,11 @@
 {% extends 'classifier/base.html' %}
 <!DOCTYPE html>
 {% block content %}
-
+<title>{{ name }}</title>
 <div class="site-wrapper">
   <div class="container">
     <div class="text-content">
-      <h1 class="title"><b>use your fancy text classifier</b></h1>
+      <h1 class="title"><b>use your fancy <br>{{ name }}<br> classifier</b></h1>
       <p class="description">
         Add Training Data
       </p> <br />
@@ -62,7 +62,7 @@
             <input type="hidden" id="correct" name='correct' value='correct'>
             <input type="hidden" id="correctBody" name='correctBody' value='{{ text }}'>
             <input type="hidden" id="correctTarget" name='correctTarget' value='{{ predicted }}'>
-            
+
         </form>
         </div>
       </div>
