@@ -1,6 +1,8 @@
 # django-text-classifier
 
-This project uses Python3, Django, and PostgreSQL.
+django text classifier provides a web front end to a scikit-learn text classifier. Users may create a new text classifier or choose a previously trained classifier. Users may manually input training data or they may upload a comma-separated value (CSV) text file in the format of `training_data, target`.
+
+This project uses Python3, and PostgreSQL. Please have these tools available when you install the project.
 
 ## Installation
 - (Recommended) Set up a virtual environment for this project. If you use virtualenv, the command would be `echo "layout python3" >> .envrc`. You will need to follow up that command with `direnv allow`.

@@ -2,28 +2,30 @@
 {% load staticfiles %}
 {% block content %}
 
-
-<div class="container">
-  <div class="row">
-    <div class"col-xs-12 col-md-8 col-sm-4">
-      <div>
-        Pick an existing classifier!
-        <p>
+<div class="site-wrapper">
+  <div class="container">
+    <div class="container">
+      <div class"col-xs-12 col-md-8 col-sm-4">
+        <div class"col-md-6">
+          Pick an existing classifier!
+          <br />
           {% for classifier in classifiers %}
-            <ul>
-              <a href="{% url 'classifier' classifier.classifier %}"> {{ classifier.classifier }} </a>
-            </ul>
-          {% endfor %}
-        </p>
-      </div>
 
-      <div>
-        Add a new classifier!
-        <form action="" method="get">
-          <input id='classifier' type="text" name="classifier" required=True><br>
-          <input id="button" type="submit" value="Submit">
-        </form>
-      </div>
+            <a href="{% url 'classifier' classifier.classifier %}"> {{ classifier.classifier }} </a><br />
+
+          {% endfor %}
+
+        </div>
+
+        <div>
+          <div class"col-md-6 offset-col-md-6">
+            Add a new classifier!
+            <form action="" method="get">
+              <input id='classifier' class=form-control type="text" name="classifier" required=True><br>
+              <input id="button" class="btn btn-default" type="submit" value="Submit">
+            </form>
+          </div>
+        </div>
 
     </div>
   </div>

@@ -26,6 +26,13 @@ class Classifier(TemplateView):
             data = TrainingSet.objects.create(classifier=classifier,
                                               target=target, body=body)
             data.save()
+        elif request.POST.get('correct'):
+            body = request.POST.get('correctBody')
+            target = request.POST.get('correct')
+            classifier = name
+            data = TrainingSet.objects.create(classifier=classifier,
+                                              target=target, body=body)
+            data.save()
         else:
             print('File')
             handle_uploaded_file(request.FILES['csvfile'], name)
@@ -35,9 +42,13 @@ class Classifier(TemplateView):
     def get(self, request, name):
         context = self.get_context_data()
         context['name'] = name
-        if request.GET.get('test'):
-            prediction = fit_predict(name, (request.GET.get('test'), ))
+        if request.GET.get('text'):
+            context['text'] = request.GET.get('text')
+            data_size = len(TrainingSet.objects.filter(classifier=name).values_list('body', flat=True))
+            pipeline = get_pipeline(name)
+            prediction = fit_predict(pipeline, (request.GET.get('text'), ))
             context['predicted'] = prediction[0]
+            context['data_size'] = data_size
 
         return render(request, self.template_name, context)
 
