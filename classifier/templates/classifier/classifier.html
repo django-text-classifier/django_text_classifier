@@ -25,7 +25,7 @@
     <h2><b>- OR -</b></h2>
     </div>
     <div class="col-xs-5">
-      Add CSV
+      <h2>Add CSV</h2>
       <form id="addCSVForm" action="" method="post" name="csvfile" enctype="multipart/form-data">
           {% csrf_token %}
           <input id="CSV" type="file" class="btn btn-default"  name="csvfile" value=""><br />
@@ -36,7 +36,7 @@
     <div class="lower">
     {% if data_size > 0 %}
       <p class="description">
-        Predict
+        <h2>Predict</h2>
       </p> <br />
       <p class="description">
           This classifier has been trained with {{ data_size }} pieces of data.
@@ -50,20 +50,26 @@
       {% if predicted %}
       <div class="predicted">
         <p>
-            Based on the training data, the text: </p>
+            Based on the training data, the text: <br />
             "{{ text }}"
-            <p> is most likely: {{ predicted }}
+          <br /> is most likely: {{ predicted }}
         </p>
 
         <form id="correctForm" action="" method="post">
-            {% csrf_token %}
-            <label for="submit">If the prediction was correct, please click here to train the classifier with the entered text:</label>
-            <input id="correctButton" type="submit" value="Correct">
+          {% csrf_token %}
+          <div class"correct">
+            <br />
+            If the prediction was correct, please click correct to train the classifier with the entered text
+            <br /><br />
+            <input id="correctButton" class="btn btn-default" type="submit" value="Correct">
             <input type="hidden" id="correct" name='correct' value='correct'>
             <input type="hidden" id="correctBody" name='correctBody' value='{{ text }}'>
             <input type="hidden" id="correctTarget" name='correctTarget' value='{{ predicted }}'>
-
+          </div>
         </form>
+
+        <br /><br /><br />
+
         </div>
       </div>
       {% endif %}

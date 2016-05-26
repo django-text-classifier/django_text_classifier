@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway);
-@import url(https://fonts.googleapis.com/css?family=Monoton);
 
 /* NAV BAR */
 .navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
@@ -45,10 +44,20 @@ h1 {
   font-size: 50px;
   letter-spacing: 8px;
   text-transform: uppercase;
+  color: #FFF;
+}
+
+h2, h3{
+  color: #FFF;
 }
 
 p {
   font-size: 22.5px;
+  color: #000;
+}
+
+.description {
+  color: #FFF;
 }
 
 body {
@@ -57,12 +66,14 @@ body {
   padding-top: 70px;
   text-align: center;
   background-color: #5C6B73;
-  color: #FFF;
+  color: #5C6B73;
 }
+
 
 a {
   color: #FFF;
 }
+
 a:hover{
   text-decoration: none;
   color: #42dca3;
@@ -102,11 +113,11 @@ a:hover{
   color: #42dca3;
   background-color: transparent;
 }
+
 .form-control {
   border: 1px solid #42dca3;
-  color: #FFF;
+  color: #000;
   background-color: transparent;
-
 }
 
 .lower {
