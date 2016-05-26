@@ -63,6 +63,7 @@ body {
 a {
   color: #FFF;
 }
+
 a:hover{
   text-decoration: none;
   color: #42dca3;
@@ -104,7 +105,7 @@ a:hover{
 }
 .form-control {
   border: 1px solid #42dca3;
-  color: #FFF;
+  color: #000;
   background-color: transparent;
 
 }

@@ -11,17 +11,17 @@
       </p>
     </div>
     <div class="body-content">
-      <div class="col-xs-5">
+      <div class="col-xs-4">
         <h3>Pick an existing classifier</h3>
         <br />
         {% for classifier in classifiers %}
           <a href="{% url 'classifier' classifier.classifier %}"> {{ classifier.classifier }} </a><br />
         {% endfor %}
       </div>
-      <div class="col-xs-2">
+      <div class="col-xs-4">
       <h2><b>- OR -</b></h2>
       </div>
-      <div class="col-xs-5">
+      <div class="col-xs-4">
         <h3>Add a new classifier</h3>
         <br />
         <form action="" method="get">
