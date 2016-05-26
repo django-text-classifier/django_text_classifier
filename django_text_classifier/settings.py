@@ -30,9 +30,10 @@ INSTALLED_APPS = (
     'rest_framework',
     'registration',
 )
-REGISTRATION_OPEN = True                
-REGISTRATION_AUTO_LOGIN = True  
-LOGIN_REDIRECT_URL = '/text/'  
+
+REGISTRATION_OPEN = True
+REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = '/text/'
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = 'home'
 

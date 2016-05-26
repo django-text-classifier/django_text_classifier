@@ -22,18 +22,23 @@
           <input id="csvbutton" type="submit" name="Submit" value="Submit"><br />
           <input type="hidden" id="classifier" value= {{ name }} >
       </form><br>
+
+      {% if data_size > 0 %}
+
+      <p>
+          This classifier has been trained with {{ data_size }} pieces of data.
+      </p>
+      
       <u>Predict</u>
       <form class="" action="" method="get">
         <input type="text" name="text"><br>
         <input type="submit" value="Submit">
       </form>
       <br>
+      {% endif %}
 
       {% if predicted %}
       <div class="predicted">
-        <p>
-            This classifier has been trained with {{ data_size }} pieces of data.
-        </p>
         <p>
             Based on the training data, the text: </p>
             "{{ text }}"
