@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^', include('classifier.urls')),
     url(r'^api/', include(router.urls)),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^accounts/', include('registration.backends.simple.urls'))
 ]
