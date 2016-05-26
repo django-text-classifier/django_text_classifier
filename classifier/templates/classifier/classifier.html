@@ -1,42 +1,52 @@
+{% extends 'classifier/base.html' %}
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>{{ name }}</title>
-    </head>
-    <body>
-        <u>Add Training Data</u>
+{% block content %}
+
+<div class="site-wrapper">
+  <div class="container">
+    <div class="text-content">
+      <h1 class="title"><b>use your fancy text classifier</b></h1>
+      <p class="description">
+        Add Training Data
+      </p> <br />
+      <div class="col-xs-5">
+        <u></u>
         <form id="addDataForm" action="" method="post">
           {% csrf_token %}
           <label for="body">Body: </label>
-          <input id='body' type="text" name="body" required=True><br>
+          <input id='body' class=form-control type="text" name="body" required=True><br>
           <label for="target">Target: </label>
-          <input id='target' type="text" name="target" required=True><br>
-          <input id="button" type="submit" value="Submit">
+          <input id='target' class=form-control type="text" name="target" required=True><br>
+          <input id="button" class="btn btn-default" type="submit" value="Submit">
           <input type="hidden" id="classifier" value= {{ name }} >
-      </form><br>
+        </form><br>
+      </div>
+    <div class="col-xs-2">
+    <h2><b>- OR -</b></h2>
+    </div>
+    <div class="col-xs-5">
       Add CSV
       <form id="addCSVForm" action="" method="post" name="csvfile" enctype="multipart/form-data">
           {% csrf_token %}
-          <input id="CSV" type="file" name="csvfile" value=""><br />
-          <input id="csvbutton" type="submit" name="Submit" value="Submit"><br />
+          <input id="CSV" type="file" class="btn btn-default"  name="csvfile" value=""><br />
+          <input id="csvbutton" class="btn btn-default" type="submit" name="Submit" value="Submit"><br />
           <input type="hidden" id="classifier" value= {{ name }} >
       </form><br>
-
+    </div><br />
+    <div class="lower">
+      <p class="description">
+        Predict
+      </p> <br />
       {% if data_size > 0 %}
-
-      <p>
+      <p class="description">
           This classifier has been trained with {{ data_size }} pieces of data.
       </p>
-      
-      <u>Predict</u>
       <form class="" action="" method="get">
-        <input type="text" name="text"><br>
-        <input type="submit" value="Submit">
+        <input type="text" class=form-control name="text"><br>
+        <input type="submit" class="btn btn-default" value="Submit">
       </form>
       <br>
       {% endif %}
-
       {% if predicted %}
       <div class="predicted">
         <p>
@@ -53,10 +63,13 @@
             <input type="hidden" id="correctBody" name='correctBody' value='{{ text }}'>
             <input type="hidden" id="correctTarget" name='correctTarget' value='{{ predicted }}'>
         </form>
+        </div>
       </div>
       {% endif %}
+    </div>
+  </div>
+</div>
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.min.js"></script>
-      <script src= '/static/classifier/classifier.js' ></script>
+    <script src= '/static/classifier/classifier.js' ></script>
 
-    </body>
-</html>
+{% endblock %}
