@@ -4,6 +4,8 @@ django text classifier provides a web front end to a scikit-learn text classifie
 
 This project uses Python3, and PostgreSQL. Please have these tools available when you install the project.
 
+Live Demo: [https://enigmatic-meadow-44274.herokuapp.com](https://enigmatic-meadow-44274.herokuapp.com)
+
 ## Installation
 - (Recommended) Set up a virtual environment for this project. If you use virtualenv, the command would be `echo "layout python3" >> .envrc`. You will need to follow up that command with `direnv allow`.
 - Ensure that [PostgreSQL is installed](http://www.postgresql.org/download/) (we use [Postgres.app](http://postgresapp.com/) on OS X). Create the database you wish to use with this project.
